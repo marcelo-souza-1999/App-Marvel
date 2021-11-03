@@ -2,7 +2,7 @@
 buildscript {
     ext.kotlin_version = '1.5.31'
     ext.lifecycler_version = '2.2.0'
-    ext.retrofit_version = "2.6.0"
+    ext.retrofit_version = "2.9.0"
     ext.koin_version = '2.2.3'
     ext.coroutines_version = '1.5.2'
     ext.glide_version = "4.11.0"
@@ -11,7 +11,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
