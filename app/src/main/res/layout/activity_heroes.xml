@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipChildren="false">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.HeroesActivity">
+
+            <include
+                android:id="@+id/toolbarMain"
+                layout="@layout/toolbar" />
+
+            <ViewFlipper
+                android:id="@+id/viewFlipperHeros"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarMain"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ProgressBar
+                    android:id="@+id/progressBarHeroes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/ProgressBarStyle"
+                    android:layout_gravity="center" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerHeroes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_start_recycler_heroes"
+                    android:layout_marginTop="@dimen/margin_top_recycler_heroes"
+                    android:layout_marginEnd="@dimen/margin_end_recycler_heroes"
+                    android:layout_marginBottom="@dimen/margin_bottom_recycler_heroes"
+                    tools:listitem="@layout/list_itens_heroes"/>
+
+                <TextView
+                    android:id="@+id/textViewShowError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/red"
+                    tools:text="Error" />
+
+            </ViewFlipper>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
