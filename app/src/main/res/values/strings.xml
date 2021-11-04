@@ -3,4 +3,10 @@
     <string name="app_name">Marvel</string>
     <!-- Title Toolbar -->
     <string name="title_toolbar">MARVEL HEROES</string>
+    <!-- Texts layout list_itens_heroes -->
+    <string name="tools_description_heroes">Despite super spy Natasha Romanoff’s checkered past, she’s become one of S.H.I.E.L.D.’s most deadly assassins and a frequent member of the Avengers.</string>
+    <string name="tools_name_heroes">Black Widow</string>
+    <string name="description_image_heroe_selected">Imagem de um Super Heroi da Marvel</string>
+    <string name="description_name_heroe">Nome do Heroi</string>
+    <string name="description_heroe">Pequena descrição sobre o Heroi</string>
 </resources>

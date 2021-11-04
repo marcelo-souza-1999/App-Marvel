@@ -1,11 +1,12 @@
-package com.marcelo.marvel
+package com.marcelo.marvel.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.marcelo.marvel.R
 
-class MainActivity : AppCompatActivity() {
+class HeroesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.list_itens_heroes)
     }
 }

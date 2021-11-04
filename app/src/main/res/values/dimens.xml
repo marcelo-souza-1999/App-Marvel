@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_toolbar">18sp</dimen>
+    <!-- Font TextView -->
+    <dimen name="text_size_toolbar">16sp</dimen>
+    <!-- Margins RecyclerView -->
+    <dimen name="margin_start_recycler_heroes">8dp</dimen>
+    <dimen name="margin_top_recycler_heroes">8dp</dimen>
+    <dimen name="margin_end_recycler_heroes">8dp</dimen>
+    <dimen name="margin_bottom_recycler_heroes">8dp</dimen>
+    <!-- Elevation and Radius CardView -->
+    <dimen name="elevation_card_view_heroes">10dp</dimen>
+    <dimen name="radius_card_view_heroes">20dp</dimen>
+    <!-- Paddings -->
+    <dimen name="padding_8">8dp</dimen>
+    <!-- Size Text -->
+    <dimen name="size_txt_name_heroes">26sp</dimen>
+    <dimen name="size_txt_description_heroes">20sp</dimen>
 </resources>
