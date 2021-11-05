@@ -12,7 +12,7 @@ sealed class NetworkResponse<out T : Any, out U : Any> {
     /**
      * Represents failure response (non-2xx) with body.
      */
-    data class ApiError<U : Any>(val body: U, val code: Int) : NetworkResponse<Nothing, U>()
+    data class ApiError<U : Any>(val body: U?, val code: Int) : NetworkResponse<Nothing, U>()
 
     /**
      *  Represents network failure (such as no internet connection).

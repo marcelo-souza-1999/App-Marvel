@@ -9,4 +9,7 @@
     <string name="description_image_heroe_selected">Imagem de um Super Heroi da Marvel</string>
     <string name="description_name_heroe">Nome do Heroi</string>
     <string name="description_heroe">Pequena descrição sobre o Heroi</string>
+    <!-- Texts Errors Repository -->
+    <string name="message_error_internet">Verifique sua conexão com a internet e tente novamente!</string>
+    <string name="message_error_server">Erro na comunicação com o servidor</string>
 </resources>
