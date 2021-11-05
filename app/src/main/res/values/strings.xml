@@ -3,6 +3,7 @@
     <string name="app_name">Marvel</string>
     <!-- Title Toolbar -->
     <string name="title_toolbar">MARVEL HEROES</string>
+    <string name="title_toolbar_comica">MARVEL COMICS</string>
     <!-- Texts layout list_itens_heroes -->
     <string name="tools_description_heroes">Despite super spy Natasha Romanoff’s checkered past, she’s become one of S.H.I.E.L.D.’s most deadly assassins and a frequent member of the Avengers.</string>
     <string name="tools_name_heroes">Black Widow</string>
@@ -11,5 +12,8 @@
     <string name="description_heroe">Pequena descrição sobre o Heroi</string>
     <!-- Texts Errors Repository -->
     <string name="message_error_internet">Verifique sua conexão com a internet e tente novamente!</string>
-    <string name="message_error_server">Erro na comunicação com o servidor</string>
+    <string name="message_error_server">Erro de comunicação com o servidor</string>
+    <string name="message_error_code_key">InvalidCredentials</string>
+    <string name="message_error_key">Credenciais inválidas</string>
+    <string name="message_error_internal_key">Aconteceu um erro inesperado</string>
 </resources>
