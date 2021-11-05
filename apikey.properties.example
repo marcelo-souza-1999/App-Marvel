@@ -1,0 +1,4 @@
+PUBLIC_API_KEY="insira sua chave pública da api"
+PRIVATE_API_KEY="insira sua chave privada da api"
+HASH_API="insira uma string qualquer"
+BASE_URL="https://gateway.marvel.com:443/v1/public/"
