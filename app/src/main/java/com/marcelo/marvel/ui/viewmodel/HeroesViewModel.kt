@@ -1,5 +1,6 @@
 package com.marcelo.marvel.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,14 +17,16 @@ class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewMode
     val heroesEvent: LiveData<List<Heroes>>
         get() = _heroesEvent
 
-    private val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
+    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
     fun getHeroes() = viewModelScope.launch {
+
         when (val heroesResult = marvelRepository.getHeroes()) {
             is HeroesResult.Success -> {
                 _heroesEvent.value = heroesResult.heroes
                 viewFlipperLiveData.value = Pair(VIEW_FLIPPER_HEROES, null)
             }
+
             is HeroesResult.ApiError -> {
                 if (heroesResult.code == R.string.message_error_code_key) {
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_key)
@@ -32,9 +35,11 @@ class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewMode
                     viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internal_key)
                 }
             }
+
             is HeroesResult.NetworkError -> {
                 viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internet)
             }
+
             is HeroesResult.ServerError -> {
                 viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_server)
             }

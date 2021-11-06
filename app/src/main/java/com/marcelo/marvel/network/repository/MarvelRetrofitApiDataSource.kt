@@ -1,6 +1,7 @@
 package com.marcelo.marvel.network.repository
 
 import android.content.Context
+import android.util.Log
 import com.marcelo.marvel.R
 import com.marcelo.marvel.models.HeroesResult
 import com.marcelo.marvel.network.services.MarvelApiService
@@ -12,6 +13,7 @@ class MarvelRetrofitApiDataSource(private val context: Context, private val marv
         return when (val heroesResponse = marvelApiService.getHeroes()) {
             is NetworkResponse.Success -> {
                 val heroes = heroesResponse.body.results
+
                 HeroesResult.Success(heroes)
             }
             is NetworkResponse.ApiError -> {

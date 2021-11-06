@@ -1,5 +1,6 @@
 package com.marcelo.marvel.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -30,10 +31,6 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
         return heroes.size
     }
 
-    fun setList(heroes: List<Heroes>) {
-        heroesList.clear()
-        heroesList.addAll(heroes)
-    }
 
     class HeroesViewHolder(private val binding: ListItensHeroesBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -41,6 +38,8 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
 
             binding.txtNameHeroes.text = heroes.name
             binding.txtDescriptionHeroes.text = heroes.description
+
+            Log.d("teste", "Nome é: "+heroes.name)
 
             Glide
                 .with(binding.root)
