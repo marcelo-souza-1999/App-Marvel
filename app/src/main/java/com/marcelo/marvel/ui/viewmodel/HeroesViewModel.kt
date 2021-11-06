@@ -1,6 +1,5 @@
 package com.marcelo.marvel.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +18,11 @@ class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewMode
 
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
-    fun getHeroes() = viewModelScope.launch {
+    init {
+        getHeroes()
+    }
+
+    private fun getHeroes() = viewModelScope.launch {
 
         when (val heroesResult = marvelRepository.getHeroes()) {
             is HeroesResult.Success -> {

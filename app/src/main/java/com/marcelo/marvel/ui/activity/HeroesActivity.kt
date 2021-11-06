@@ -1,7 +1,6 @@
 package com.marcelo.marvel.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelo.marvel.R
@@ -22,18 +21,24 @@ class HeroesActivity : BaseActivity() {
         bindingToolbar = DataBindingUtil.setContentView(this, R.layout.toolbar)
 
         setupToolbar(bindingToolbar.toolbarMain, bindingToolbar.titleToolbar, R.string.title_toolbar)
-        showHeroesRecyclerView()
+        setupRecyclerview()
+        setupObservers()
     }
 
-    private fun showHeroesRecyclerView() {
+    private fun setupRecyclerview() {
+        val recycler = bindingMain.recyclerHeroes
+        recycler.layoutManager = LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
+        recycler.setHasFixedSize(true)
+        recycler.adapter = HeroesAdapter()
+    }
 
-        viewModel.heroesEvent.observe(this) { getHeroes ->
-
-            getHeroes?.let {heroes ->
+    private fun setupObservers() {
+        viewModel.heroesEvent.observe(this) { heroes ->
+            heroes?.let { it ->
                 with(bindingMain.recyclerHeroes) {
                     LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
-                    adapter = HeroesAdapter(getHeroes)
+                    adapter = HeroesAdapter(it)
                 }
             }
         }
@@ -46,7 +51,5 @@ class HeroesActivity : BaseActivity() {
                 }
             }
         }
-
-        viewModel.getHeroes()
     }
 }

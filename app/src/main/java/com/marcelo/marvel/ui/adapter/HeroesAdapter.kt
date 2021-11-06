@@ -10,10 +10,8 @@ import com.marcelo.marvel.R
 import com.marcelo.marvel.databinding.ListItensHeroesBinding
 import com.marcelo.marvel.models.Heroes
 
-class HeroesAdapter(private val heroes: List<Heroes>) :
+class HeroesAdapter(private val heroes: List<Heroes> = listOf()) :
     RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
-
-    private val heroesList = ArrayList<Heroes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
 
