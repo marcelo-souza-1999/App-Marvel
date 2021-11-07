@@ -2,14 +2,19 @@ package com.marcelo.marvel.network.repository
 
 import android.content.Context
 import android.util.Log
+import androidx.core.content.PackageManagerCompat.LOG_TAG
 import com.marcelo.marvel.BuildConfig
 import com.marcelo.marvel.R
+import com.marcelo.marvel.models.Heroes
 import com.marcelo.marvel.models.HeroesResult
 import com.marcelo.marvel.network.services.MarvelApiService
 import com.marcelo.marvel.network.services.response.NetworkResponse
 import com.marcelo.marvel.utils.HashMD5
 
-class MarvelRetrofitApiDataSource(private val context: Context, private val marvelApiService: MarvelApiService) : MarvelApiDataSource {
+class MarvelRetrofitApiDataSource(
+    private val context: Context,
+    private val marvelApiService: MarvelApiService
+) : MarvelApiDataSource {
 
     override suspend fun fetchHeroes(): HeroesResult {
         val timestamp = System.currentTimeMillis().toString()
@@ -24,7 +29,19 @@ class MarvelRetrofitApiDataSource(private val context: Context, private val marv
             hash = hash
         )) {
             is NetworkResponse.Success -> {
-                val heroes = heroesResponse.body.results
+
+                val heroes: MutableList<Heroes> = mutableListOf()
+
+                heroesResponse.body.let { heroesBodyResponse ->
+                    for (result in heroesBodyResponse.data) {
+                        val heroe = result.results[0].getHeroeModel()
+                        heroes.add(heroe)
+
+                        Log.d("testeHeroi", "Lista: "+ heroes)
+                    }
+                }
+
+                //val heroes = heroesResponse.body.data
 
                 HeroesResult.Success(heroes)
             }

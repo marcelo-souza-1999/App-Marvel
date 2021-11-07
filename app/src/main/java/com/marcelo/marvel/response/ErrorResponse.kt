@@ -1,4 +1,4 @@
-package com.marcelo.marvel.models
+package com.marcelo.marvel.response
 
 import com.squareup.moshi.Json
 

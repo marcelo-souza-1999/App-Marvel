@@ -1,6 +1,5 @@
 package com.marcelo.marvel.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -36,8 +35,6 @@ class HeroesAdapter(private val heroes: List<Heroes> = listOf()) :
 
             binding.txtNameHeroes.text = heroes.name
             binding.txtDescriptionHeroes.text = heroes.description
-
-            Log.d("teste", "Nome é: "+heroes.name)
 
             Glide
                 .with(binding.root)
