@@ -22,18 +22,16 @@ class HeroesActivity : BaseActivity() {
         bindingToolbar = DataBindingUtil.setContentView(this, R.layout.toolbar)
 
         setupToolbar(bindingToolbar.toolbarMain, bindingToolbar.titleToolbar, R.string.title_toolbar)
-        showHeroesRecyclerView()
+        setupObservers()
     }
 
-    private fun showHeroesRecyclerView() {
-
-        viewModel.heroesEvent.observe(this) { getHeroes ->
-
-            getHeroes?.let {heroes ->
+    private fun setupObservers() {
+        viewModel.heroesEvent.observe(this) { heroes ->
+            heroes?.let { it ->
                 with(bindingMain.recyclerHeroes) {
-                    LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
-                    adapter = HeroesAdapter(getHeroes)
+                    Log.d("testeHeroi", "Heroi: "+it)
+                    adapter = HeroesAdapter(it)
                 }
             }
         }

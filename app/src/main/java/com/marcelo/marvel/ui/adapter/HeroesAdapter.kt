@@ -13,8 +13,6 @@ import com.marcelo.marvel.models.Heroes
 class HeroesAdapter(private val heroes: List<Heroes>) :
     RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
-    private val heroesList = ArrayList<Heroes>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
 
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -39,7 +37,7 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
             binding.txtNameHeroes.text = heroes.name
             binding.txtDescriptionHeroes.text = heroes.description
 
-            Log.d("teste", "Nome é: "+heroes.name)
+            Log.d("testeHeroi", "Nome é: "+heroes.name)
 
             Glide
                 .with(binding.root)
