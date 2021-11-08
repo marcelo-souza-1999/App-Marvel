@@ -10,6 +10,8 @@ interface MarvelApiService {
 
     @GET("characters")
     suspend fun getHeroes(
+        @Query("orderBy") orderBy: String = "name",
+        @Query("limit") limit: Int = 100,
         @Query("ts") timestamp: String,
         @Query("apikey") publicApiKey: String,
         @Query("hash") hash: String

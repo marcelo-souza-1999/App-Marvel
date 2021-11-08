@@ -13,15 +13,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HeroesActivity : BaseActivity() {
     private lateinit var bindingMain: ActivityHeroesBinding
-    private lateinit var bindingToolbar: ToolbarBinding
     private val viewModel: HeroesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingMain = DataBindingUtil.setContentView(this, R.layout.activity_heroes)
-        bindingToolbar = DataBindingUtil.setContentView(this, R.layout.toolbar)
 
-        setupToolbar(bindingToolbar.toolbarMain, bindingToolbar.titleToolbar, R.string.title_toolbar)
         setupObservers()
     }
 
@@ -31,20 +28,21 @@ class HeroesActivity : BaseActivity() {
                 with(bindingMain.recyclerHeroes) {
                     LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
-                    Log.d("testeHeroi", "Heroi: "+it)
                     adapter = HeroesAdapter(it)
+                    bindingMain.recyclerHeroes.adapter = adapter
+                    Log.d("teste", "Herois: "+it)
                 }
             }
         }
 
-        viewModel.viewFlipperLiveData.observe(this) { pairs ->
+        /*viewModel.viewFlipperLiveData.observe(this@HeroesActivity) { pairs ->
             pairs?.let { viewFlipper ->
-                bindingMain.viewFlipperHeros.displayedChild = viewFlipper.first
+                viewFlipperHeros.displayedChild = viewFlipper.first
                 viewFlipper.second?.let { msgErrorId ->
                     bindingMain.textViewShowError.text = getString(msgErrorId)
                 }
             }
-        }
+        }*/
 
         viewModel.getHeroes()
     }
