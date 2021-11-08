@@ -18,6 +18,10 @@ class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewMode
 
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
+    init {
+        getHeroes()
+    }
+
     fun getHeroes() = viewModelScope.launch {
 
         when (val heroesResult = marvelRepository.getHeroes()) {

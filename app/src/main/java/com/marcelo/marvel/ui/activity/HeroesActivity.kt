@@ -29,6 +29,7 @@ class HeroesActivity : BaseActivity() {
         viewModel.heroesEvent.observe(this) { heroes ->
             heroes?.let { it ->
                 with(bindingMain.recyclerHeroes) {
+                    LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
                     Log.d("testeHeroi", "Heroi: "+it)
                     adapter = HeroesAdapter(it)

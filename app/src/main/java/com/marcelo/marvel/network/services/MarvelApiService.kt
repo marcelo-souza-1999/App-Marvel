@@ -1,8 +1,8 @@
 package com.marcelo.marvel.network.services
 
-import com.marcelo.marvel.models.ErrorResponse
 import com.marcelo.marvel.models.HeroesResponse
 import com.marcelo.marvel.network.services.response.NetworkResponse
+import com.marcelo.marvel.response.ErrorResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
