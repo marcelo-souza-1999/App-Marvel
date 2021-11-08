@@ -1,6 +1,7 @@
 package com.marcelo.marvel.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -28,11 +29,6 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
 
     override fun getItemCount(): Int {
         return heroes.size
-    }
-
-    fun setList(heroes: List<Heroes>) {
-        heroesList.clear()
-        heroesList.addAll(heroes)
     }
 
     class HeroesViewHolder(private val binding: ListItensHeroesBinding) : RecyclerView.ViewHolder(binding.root) {

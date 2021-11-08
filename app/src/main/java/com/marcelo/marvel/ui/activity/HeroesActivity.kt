@@ -9,6 +9,7 @@ import com.marcelo.marvel.databinding.ActivityHeroesBinding
 import com.marcelo.marvel.databinding.ToolbarBinding
 import com.marcelo.marvel.ui.adapter.HeroesAdapter
 import com.marcelo.marvel.ui.viewmodel.HeroesViewModel
+import kotlinx.android.synthetic.main.activity_heroes.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HeroesActivity : BaseActivity() {
@@ -34,14 +35,14 @@ class HeroesActivity : BaseActivity() {
             }
         }
 
-        /*viewModel.viewFlipperLiveData.observe(this@HeroesActivity) { pairs ->
+        viewModel.viewFlipperLiveData.observe(this@HeroesActivity) { pairs ->
             pairs?.let { viewFlipper ->
                 viewFlipperHeros.displayedChild = viewFlipper.first
                 viewFlipper.second?.let { msgErrorId ->
                     bindingMain.textViewShowError.text = getString(msgErrorId)
                 }
             }
-        }*/
+        }
 
         viewModel.getHeroes()
     }
