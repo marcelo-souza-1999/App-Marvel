@@ -42,7 +42,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageViewHeroes" />
 
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerHeroes"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -62,7 +61,6 @@
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-
                     android:textColor="@color/red"
                     tools:text="Error" />
 

@@ -1,7 +1,6 @@
 package com.marcelo.marvel.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,8 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
 
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding: ListItensHeroesBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_itens_heroes, parent, false)
+        val binding: ListItensHeroesBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.list_itens_heroes, parent, false)
 
         return HeroesViewHolder(binding)
     }
@@ -31,7 +31,8 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
         return heroes.size
     }
 
-    class HeroesViewHolder(private val binding: ListItensHeroesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HeroesViewHolder(private val binding: ListItensHeroesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(heroes: Heroes) {
 
