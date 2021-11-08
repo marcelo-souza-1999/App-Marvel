@@ -30,7 +30,6 @@ class HeroesActivity : BaseActivity() {
                     setHasFixedSize(true)
                     adapter = HeroesAdapter(it)
                     bindingMain.recyclerHeroes.adapter = adapter
-                    Log.d("teste", "Herois: "+it)
                 }
             }
         }

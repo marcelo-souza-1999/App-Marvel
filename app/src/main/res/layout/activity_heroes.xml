@@ -50,6 +50,7 @@
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textAllCaps="true"
+
                     android:textColor="@color/red"
                     tools:text="Error" />
 

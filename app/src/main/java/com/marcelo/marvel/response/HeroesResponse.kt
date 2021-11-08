@@ -1,7 +1,7 @@
-package com.marcelo.marvel.models
+package com.marcelo.marvel.response
 
+import com.marcelo.marvel.models.DataClass
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class HeroesResponse(
     @field:Json(name = "status") val status: String,
