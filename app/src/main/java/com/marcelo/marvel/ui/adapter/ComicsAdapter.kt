@@ -35,9 +35,10 @@ class ComicsAdapter(private val context: Context, private val comics: List<Comic
 
         fun bind(comics: Comics) {
 
+            val numberPages: String = comics.pageCount.toString()  + context.getString(R.string.comics_pages)
             binding.txtTitleComic.text = comics.title
             binding.txtDescriptionComic.text = comics.description
-            binding.txtNumberPages.text = comics.pageCount.toString() + context.getString(R.string.comics_pages)
+            binding.txtNumberPages.text = numberPages
 
             Glide
                 .with(binding.root)
