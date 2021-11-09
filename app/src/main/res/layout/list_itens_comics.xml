@@ -38,23 +38,23 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageViewHeroes"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:contentDescription="@string/description_image_heroe_selected"
+                        android:layout_height="600dp"
+                        android:contentDescription="@string/description_image_comis_selected"
                         android:importantForAccessibility="no"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toTopOf="@+id/txtTitleComic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@drawable/black_widow" />
+                        tools:srcCompat="@drawable/comic" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txtNameHeroes"
+                        android:id="@+id/txtTitleComic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/background"
                         android:contentDescription="@string/description_name_heroe"
                         android:focusable="true"
@@ -64,19 +64,40 @@
                         android:textSize="@dimen/size_txt_name_heroes"
                         android:textStyle="bold"
                         app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toTopOf="@+id/txtDescriptionHeroes"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:text="@string/tools_name_heroes" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewHeroes"
+                        tools:text="@string/tools_title_comic" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txtDescriptionHeroes"
+                        android:id="@+id/txtNumberPages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/background"
+                        android:contentDescription="@string/description_pages_count"
+                        android:focusable="true"
+                        android:padding="@dimen/padding_8"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_txt_count_pages"
+                        android:textStyle="bold"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDescriptionComic"
+                        tools:text="@string/tools_total_pages" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtDescriptionComic"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/grey_light"
                         android:contentDescription="@string/description_heroe"
                         android:focusable="true"
@@ -86,17 +107,16 @@
                         android:textSize="@dimen/size_txt_description_heroes"
                         android:textStyle="bold"
                         app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewHeroes"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitleComic"
                         tools:text="@string/tools_description_heroes" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
