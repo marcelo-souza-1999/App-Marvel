@@ -1,18 +1,17 @@
 package com.marcelo.marvel.ui.activity
 
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelo.marvel.R
 import com.marcelo.marvel.databinding.ActivityHeroesBinding
-import com.marcelo.marvel.databinding.ToolbarBinding
 import com.marcelo.marvel.ui.adapter.HeroesAdapter
 import com.marcelo.marvel.ui.viewmodel.HeroesViewModel
-import kotlinx.android.synthetic.main.activity_heroes.*
+import kotlinx.android.synthetic.main.toolbar_heroes.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HeroesActivity : BaseActivity() {
+class HeroesActivity : AppCompatActivity() {
     private lateinit var bindingMain: ActivityHeroesBinding
     private val viewModel: HeroesViewModel by viewModel()
 
@@ -20,7 +19,14 @@ class HeroesActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         bindingMain = DataBindingUtil.setContentView(this, R.layout.activity_heroes)
 
+        setupToolbar()
         setupObservers()
+    }
+
+    private fun setupToolbar() {
+        toolbar.title = ""
+        titleToolbar.text = getString(R.string.title_toolbar_heroes)
+        setSupportActionBar(toolbar)
     }
 
     private fun setupObservers() {
@@ -37,7 +43,7 @@ class HeroesActivity : BaseActivity() {
 
         viewModel.viewFlipperLiveData.observe(this@HeroesActivity) { pairs ->
             pairs?.let { viewFlipper ->
-                viewFlipperHeros.displayedChild = viewFlipper.first
+                bindingMain.viewFlipperHeros.displayedChild = viewFlipper.first
                 viewFlipper.second?.let { msgErrorId ->
                     bindingMain.textViewShowError.text = getString(msgErrorId)
                 }
