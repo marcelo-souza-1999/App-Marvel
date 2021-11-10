@@ -5,13 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.marcelo.marvel.data.local.dao.CharacterDAO
+import com.marcelo.marvel.data.local.dao.ComicDAO
 import com.marcelo.marvel.data.local.entity.CharacterEntity
+import com.marcelo.marvel.data.local.entity.ComicEntity
 
-@Database(entities = [CharacterEntity::class], version = 1, exportSchema = false)
+@Database(entities = [CharacterEntity::class, ComicEntity::class], version = 1, exportSchema = false)
 abstract class MarvelDatabase : RoomDatabase() {
 
     abstract fun characterDAO(): CharacterDAO
-    abstract fun comicDAO(): CharacterDAO
+    abstract fun comicDAO(): ComicDAO
 
     companion object {
         @Volatile

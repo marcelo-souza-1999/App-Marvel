@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface ComicDAO {
 
     @Query("SELECT * FROM comics")
-    suspend fun getAllComic(): Flow<List<ComicEntity>>
+    fun getAllComic(): Flow<List<ComicEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertComics(comicList: List<ComicEntity>)

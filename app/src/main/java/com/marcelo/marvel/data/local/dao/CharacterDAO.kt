@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterDAO {
 
     @Query("SELECT * FROM characters")
-    suspend fun getAllCharacters(): Flow<List<CharacterEntity>>
+    fun getAllCharacters(): Flow<List<CharacterEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterEntity)
