@@ -4,6 +4,7 @@ import com.marcelo.marvel.network.repository.MarvelApiDataSource
 import com.marcelo.marvel.network.repository.MarvelRepository
 import com.marcelo.marvel.network.repository.MarvelRetrofitApiDataSource
 import com.marcelo.marvel.network.services.ApiService.serviceMarvel
+import com.marcelo.marvel.ui.viewmodel.ComicsViewModel
 import com.marcelo.marvel.ui.viewmodel.HeroesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -17,7 +18,7 @@ val retrofitModule = module {
 val repositoryModule = module {
 
     single {
-        MarvelRepository(get(), get())
+        MarvelRepository(get())
     }
 
     single<MarvelApiDataSource> {
@@ -25,9 +26,15 @@ val repositoryModule = module {
     }
 }
 
-val viewModelModule = module {
+val viewModelHeroesModule = module {
 
     viewModel {
         HeroesViewModel(get())
+    }
+}
+val viewModelComicsModule = module {
+
+    viewModel {
+        ComicsViewModel(get())
     }
 }

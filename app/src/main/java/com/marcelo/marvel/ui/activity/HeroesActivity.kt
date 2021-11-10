@@ -31,12 +31,18 @@ class HeroesActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.heroesEvent.observe(this) { heroes ->
-            heroes?.let { it ->
+            heroes?.let { getHeroes ->
                 with(bindingMain.recyclerHeroes) {
                     LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
-                    adapter = HeroesAdapter(it)
-                    bindingMain.recyclerHeroes.adapter = adapter
+                    adapter = HeroesAdapter(getHeroes) { comic ->
+                        val intent = ComicsActivity.getStartIntent(
+                            this@HeroesActivity,
+                            comic.id
+                        )
+                        bindingMain.recyclerHeroes.adapter = adapter
+                        this@HeroesActivity.startActivity(intent)
+                    }
                 }
             }
         }

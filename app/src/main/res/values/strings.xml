@@ -15,6 +15,7 @@
     <!-- Texts layout list_itens_comics -->
     <string name="tools_title_comic">Black Widow (2020) #11</string>
     <string name="tools_total_pages">10 páginas</string>
+    <string name="comics_pages"> páginas</string>
     <!-- Texts Errors Repository -->
     <string name="message_error_internet">Verifique sua conexão com a internet e tente novamente!</string>
     <string name="message_error_server">Erro de comunicação com o servidor</string>
