@@ -1,4 +1,4 @@
-package com.marcelo.marvel.network.repository
+package com.marcelo.marvel.data.remote.repository
 
 import com.marcelo.marvel.models.ComicsResult
 import com.marcelo.marvel.models.HeroesResult

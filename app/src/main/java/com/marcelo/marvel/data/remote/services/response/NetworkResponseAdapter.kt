@@ -1,4 +1,4 @@
-package com.marcelo.marvel.network.services.response
+package com.marcelo.marvel.data.remote.services.response
 
 import okhttp3.ResponseBody
 import retrofit2.Call

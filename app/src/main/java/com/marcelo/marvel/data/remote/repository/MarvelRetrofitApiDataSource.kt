@@ -1,12 +1,12 @@
-package com.marcelo.marvel.network.repository
+package com.marcelo.marvel.data.remote.repository
 
 import android.content.Context
 import com.marcelo.marvel.BuildConfig
 import com.marcelo.marvel.R
 import com.marcelo.marvel.models.ComicsResult
 import com.marcelo.marvel.models.HeroesResult
-import com.marcelo.marvel.network.services.MarvelApiService
-import com.marcelo.marvel.network.services.response.NetworkResponse
+import com.marcelo.marvel.data.remote.services.MarvelApiService
+import com.marcelo.marvel.data.remote.services.response.NetworkResponse
 import com.marcelo.marvel.utils.HashMD5
 
 class MarvelRetrofitApiDataSource(private val context: Context, private val marvelApiService: MarvelApiService) : MarvelApiDataSource {

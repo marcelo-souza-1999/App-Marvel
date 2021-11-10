@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.marcelo.marvel.R
 import com.marcelo.marvel.models.Heroes
 import com.marcelo.marvel.models.HeroesResult
-import com.marcelo.marvel.network.repository.MarvelRepository
+import com.marcelo.marvel.data.remote.repository.MarvelRepository
 import kotlinx.coroutines.launch
 
 class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewModel() {
