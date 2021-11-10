@@ -17,7 +17,7 @@ val retrofitModule = module {
 val repositoryModule = module {
 
     single {
-        MarvelRepository(get(), get())
+        MarvelRepository(get())
     }
 
     single<MarvelApiDataSource> {
