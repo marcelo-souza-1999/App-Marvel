@@ -1,10 +1,9 @@
-package com.marcelo.marvel.network.services
+package com.marcelo.marvel.data.remote.services
 
 import com.marcelo.marvel.BuildConfig
-import com.marcelo.marvel.network.services.response.NetworkResponseAdapterFactory
+import com.marcelo.marvel.data.remote.services.response.NetworkResponseAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 
 object ApiService {
 

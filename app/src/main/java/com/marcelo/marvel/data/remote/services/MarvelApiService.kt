@@ -1,6 +1,6 @@
-package com.marcelo.marvel.network.services
+package com.marcelo.marvel.data.remote.services
 
-import com.marcelo.marvel.network.services.response.NetworkResponse
+import com.marcelo.marvel.data.remote.services.response.NetworkResponse
 import com.marcelo.marvel.response.ComicsResponse
 import com.marcelo.marvel.response.ErrorResponse
 import com.marcelo.marvel.response.HeroesResponse

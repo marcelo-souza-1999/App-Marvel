@@ -1,9 +1,9 @@
 package com.marcelo.marvel.directory
 
-import com.marcelo.marvel.network.repository.MarvelApiDataSource
-import com.marcelo.marvel.network.repository.MarvelRepository
-import com.marcelo.marvel.network.repository.MarvelRetrofitApiDataSource
-import com.marcelo.marvel.network.services.ApiService.serviceMarvel
+import com.marcelo.marvel.data.remote.repository.MarvelApiDataSource
+import com.marcelo.marvel.data.remote.repository.MarvelRepository
+import com.marcelo.marvel.data.remote.repository.MarvelRetrofitApiDataSource
+import com.marcelo.marvel.data.remote.services.ApiService.serviceMarvel
 import com.marcelo.marvel.ui.viewmodel.ComicsViewModel
 import com.marcelo.marvel.ui.viewmodel.HeroesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
