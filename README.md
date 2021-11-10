@@ -30,14 +30,15 @@ Koin para injeção de dependências, arquitetura MVVM e DataBindings.
   na segunda os comics são carregados baseado no id do Herói
 
 ## Screenshots das Activity
+
 <img src="/imgs/imagem_um.jpeg" width="200">
 <img src="/imgs/imagem_dois.jpeg" width="200">
 <img src="/imgs/imagem_tres.jpeg" width="200">
 
-
 ## Para executar o app
 
-- Renomeie o arquivo **apikey.properties.example para apikey.properties, e preencha os dados solicitados **
+- Renomeie o arquivo **apikey.properties.example para apikey.properties, e preencha os dados
+  solicitados **
 
 ## Desenvolvedor
 
