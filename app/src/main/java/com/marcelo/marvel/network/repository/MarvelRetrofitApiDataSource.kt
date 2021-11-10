@@ -24,7 +24,7 @@ class MarvelRetrofitApiDataSource(private val context: Context, private val marv
             hash = hash
         )) {
             is NetworkResponse.Success -> {
-                val heroes = heroesResponse.body.data.heroes
+                val heroes = heroesResponse.body.dataHeroes.heroes
 
                 HeroesResult.Success(heroes)
             }

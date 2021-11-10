@@ -9,7 +9,10 @@ import com.marcelo.marvel.R
 import com.marcelo.marvel.databinding.ListItensHeroesBinding
 import com.marcelo.marvel.models.Heroes
 
-class HeroesAdapter(private val heroes: List<Heroes>) :
+class HeroesAdapter(
+    private val heroes: List<Heroes>,
+    private val onItemClickListener: ((heroi: Heroes) -> Unit)
+) :
     RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
@@ -18,7 +21,7 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
         val binding: ListItensHeroesBinding =
             DataBindingUtil.inflate(layoutInflater, R.layout.list_itens_heroes, parent, false)
 
-        return HeroesViewHolder(binding)
+        return HeroesViewHolder(binding, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) {
@@ -29,7 +32,7 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
         return heroes.size
     }
 
-    class HeroesViewHolder(private val binding: ListItensHeroesBinding) :
+    class HeroesViewHolder(private val binding: ListItensHeroesBinding, private val onItemClickListener: ((heroi: Heroes) -> Unit)) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(heroes: Heroes) {
@@ -42,6 +45,10 @@ class HeroesAdapter(private val heroes: List<Heroes>) :
                 .load(heroes.thumbnail.path + "." + heroes.thumbnail.extension)
                 .centerCrop()
                 .into(binding.imageViewHeroes)
+
+            binding.imageViewHeroes.setOnClickListener {
+                onItemClickListener(heroes)
+            }
         }
     }
 

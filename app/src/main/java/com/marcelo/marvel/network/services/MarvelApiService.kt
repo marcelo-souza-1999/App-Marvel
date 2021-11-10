@@ -1,6 +1,7 @@
 package com.marcelo.marvel.network.services
 
 import com.marcelo.marvel.network.services.response.NetworkResponse
+import com.marcelo.marvel.response.ComicsResponse
 import com.marcelo.marvel.response.ErrorResponse
 import com.marcelo.marvel.response.HeroesResponse
 import retrofit2.http.GET
@@ -27,5 +28,5 @@ interface MarvelApiService {
         @Query("ts") timestamp: String,
         @Query("apikey") publicApiKey: String,
         @Query("hash") hash: String
-    ): NetworkResponse<HeroesResponse, ErrorResponse>
+    ): NetworkResponse<ComicsResponse, ErrorResponse>
 }

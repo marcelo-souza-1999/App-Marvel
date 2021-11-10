@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.activity.ComicsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".ui.activity.HeroesActivity"/>
         <activity
             android:name=".ui.activity.HeroesActivity"
             android:exported="true">

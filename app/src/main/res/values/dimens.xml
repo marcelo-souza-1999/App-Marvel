@@ -14,6 +14,7 @@
     <dimen name="padding_8">8dp</dimen>
     <!-- Size Text -->
     <dimen name="size_txt_name_heroes">26sp</dimen>
+    <dimen name="size_txt_title_comics">22sp</dimen>
     <dimen name="size_txt_count_pages">16sp</dimen>
     <dimen name="size_txt_description_heroes">20sp</dimen>
 </resources>
