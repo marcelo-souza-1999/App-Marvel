@@ -14,11 +14,11 @@
         android:theme="@style/Theme.Marvel"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.ComicsActivity"
+            android:name=".presentation.activity.ComicsActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.HeroesActivity"/>
+            android:parentActivityName=".presentation.activity.HeroesActivity"/>
         <activity
-            android:name=".ui.activity.HeroesActivity"
+            android:name=".presentation.activity.HeroesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

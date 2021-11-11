@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "comics")
 data class ComicEntity(
     @PrimaryKey val id: Long,
-    val name: String,
+    val title: String,
     val description: String?,
+    val pageCount: Long,
     val thumbnailUrl: String,
-    val pageCount: Long
+    val characterId: Long
 )
