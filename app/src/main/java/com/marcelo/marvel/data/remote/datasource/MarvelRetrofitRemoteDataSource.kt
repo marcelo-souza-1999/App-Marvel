@@ -3,16 +3,18 @@ package com.marcelo.marvel.data.remote.datasource
 import android.content.Context
 import com.marcelo.marvel.BuildConfig
 import com.marcelo.marvel.R
+import com.marcelo.marvel.data.remote.response.NetworkResponse
+import com.marcelo.marvel.data.remote.services.MarvelApiService
 import com.marcelo.marvel.domain.models.ComicsResult
 import com.marcelo.marvel.domain.models.HeroesResult
-import com.marcelo.marvel.data.remote.services.MarvelApiService
-import com.marcelo.marvel.data.remote.response.NetworkResponse
 import com.marcelo.marvel.utils.HashMD5
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
-class MarvelRetrofitApiDataSource(private val context: Context, private val marvelApiService: MarvelApiService) :
-    MarvelApiDataSource {
+class MarvelRetrofitRemoteDataSource(private val context: Context, private val marvelApiService: MarvelApiService) :
+    MarvelRemoteDataSource {
 
-    override suspend fun fetchHeroes(): HeroesResult {
+    override suspend fun fetchHeroes(): Flow<HeroesResult> {
         val timestamp = System.currentTimeMillis().toString()
         val publicApiKey = BuildConfig.PUBLIC_API_KEY
         val privateApiKey = BuildConfig.PRIVATE_API_KEY
@@ -27,15 +29,15 @@ class MarvelRetrofitApiDataSource(private val context: Context, private val marv
             is NetworkResponse.Success -> {
                 val heroes = heroesResponse.body.dataHeroes.heroes
 
-                HeroesResult.Success(heroes)
+                flowOf(HeroesResult.Success(heroes))
             }
             is NetworkResponse.ApiError -> {
-                HeroesResult.ApiError(heroesResponse.code, heroesResponse.body?.message)
+                flowOf(HeroesResult.ApiError(heroesResponse.code, heroesResponse.body?.message))
             }
             is NetworkResponse.NetworkError -> {
-                HeroesResult.NetworkError(context.getString(R.string.message_error_internet))
+                flowOf(HeroesResult.NetworkError(context.getString(R.string.message_error_internet)))
             }
-            else -> HeroesResult.ServerError(context.getString(R.string.message_error_server))
+            else -> flowOf(HeroesResult.ServerError(context.getString(R.string.message_error_server)))
         }
     }
 

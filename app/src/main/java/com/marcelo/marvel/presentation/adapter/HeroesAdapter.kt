@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.marcelo.marvel.R
 import com.marcelo.marvel.databinding.ListItensHeroesBinding
-import com.marcelo.marvel.domain.models.Heroes
+import com.marcelo.marvel.domain.models.Hero
 
 class HeroesAdapter(
-    private val heroes: List<Heroes>,
-    private val onItemClickListener: ((heroi: Heroes) -> Unit)
+    private val heroes: List<Hero>,
+    private val onItemClickListener: ((heroi: Hero) -> Unit)
 ) :
     RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
@@ -32,23 +32,23 @@ class HeroesAdapter(
         return heroes.size
     }
 
-    class HeroesViewHolder(private val binding: ListItensHeroesBinding, private val onItemClickListener: ((heroi: Heroes) -> Unit)) :
+    class HeroesViewHolder(private val binding: ListItensHeroesBinding, private val onItemClickListener: ((heroi: Hero) -> Unit)) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(heroes: Heroes) {
+        fun bind(hero: Hero) {
 
-            binding.txtNameHeroes.text = heroes.name
-            binding.txtDescriptionHeroes.text = heroes.description
+            binding.txtNameHeroes.text = hero.name
+            binding.txtDescriptionHeroes.text = hero.description
 
             Glide
                 .with(binding.root)
-                .load(heroes.thumbnail.path + "." + heroes.thumbnail.extension)
+                .load(hero.thumbnail.path + "." + hero.thumbnail.extension)
                 .centerCrop()
                 .error(R.drawable.broken_shield)
                 .into(binding.imageViewHeroes)
 
             binding.imageViewHeroes.setOnClickListener {
-                onItemClickListener(heroes)
+                onItemClickListener(hero)
             }
         }
     }

@@ -1,21 +1,16 @@
 package com.marcelo.marvel.data.local.app
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.marcelo.marvel.data.local.dao.HeroesDAO
-import com.marcelo.marvel.data.local.dao.ComicDao
-import com.marcelo.marvel.data.local.entity.HeroesEntity
-import com.marcelo.marvel.data.local.entity.ComicEntity
+import com.marcelo.marvel.data.local.dao.HeroDAO
+import com.marcelo.marvel.data.local.entity.HeroEntity
 
-@Database(entities = [HeroesEntity::class, ComicEntity::class], version = 1, exportSchema = false)
+@Database(entities = [HeroEntity::class], version = 1, exportSchema = false)
 abstract class MarvelDatabase : RoomDatabase() {
 
-    abstract fun characterDAO(): HeroesDAO
-    abstract fun comicDAO(): ComicDao
+    abstract fun heroDao(): HeroDAO
 
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: MarvelDatabase? = null
 
@@ -32,5 +27,5 @@ abstract class MarvelDatabase : RoomDatabase() {
                 return instance
             }
         }
-    }
+    }*/
 }

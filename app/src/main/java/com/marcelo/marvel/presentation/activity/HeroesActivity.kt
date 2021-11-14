@@ -30,7 +30,7 @@ class HeroesActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.heroesEvent.observe(this) { heroes ->
+        viewModel.heroEvent.observe(this) { heroes ->
             heroes?.let { getHeroes ->
                 with(bindingMain.recyclerHeroes) {
                     LinearLayoutManager(this@HeroesActivity, LinearLayoutManager.HORIZONTAL, false)

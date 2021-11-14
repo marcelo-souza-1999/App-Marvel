@@ -1,8 +1,12 @@
 package com.marcelo.marvel.directory
 
-import com.marcelo.marvel.data.remote.datasource.MarvelApiDataSource
+import androidx.room.Room
+import com.marcelo.marvel.data.local.app.MarvelDatabase
+import com.marcelo.marvel.data.local.datasource.MarvelDatabaseDataSource
+import com.marcelo.marvel.data.local.datasource.MarvelLocalDataSource
+import com.marcelo.marvel.data.remote.datasource.MarvelRemoteDataSource
 import com.marcelo.marvel.data.repository.MarvelRepository
-import com.marcelo.marvel.data.remote.datasource.MarvelRetrofitApiDataSource
+import com.marcelo.marvel.data.remote.datasource.MarvelRetrofitRemoteDataSource
 import com.marcelo.marvel.data.remote.services.ApiService.serviceMarvel
 import com.marcelo.marvel.presentation.viewmodel.ComicsViewModel
 import com.marcelo.marvel.presentation.viewmodel.HeroesViewModel
@@ -15,14 +19,29 @@ val retrofitModule = module {
     }
 }
 
-val repositoryModule = module {
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(
+            get(),
+            MarvelDatabase::class.java,
+            "marvel_database"
+        ).build()
+    }
+}
+
+val daoModule = module {
+    single {get<MarvelDatabase>().heroDao()}
 
     single {
-        MarvelRepository(get())
+        MarvelRepository(get(), get())
     }
 
-    single<MarvelApiDataSource> {
-        MarvelRetrofitApiDataSource(get(), get())
+    single<MarvelRemoteDataSource> {
+        MarvelRetrofitRemoteDataSource(get(), get())
+    }
+
+    single<MarvelDatabaseDataSource> {
+        MarvelLocalDataSource(get())
     }
 }
 
