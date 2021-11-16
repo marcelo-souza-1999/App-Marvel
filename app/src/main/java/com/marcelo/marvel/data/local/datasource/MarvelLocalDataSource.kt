@@ -1,8 +1,8 @@
 package com.marcelo.marvel.data.local.datasource
 
+import android.util.Log
 import com.marcelo.marvel.data.local.dao.HeroDAO
 import com.marcelo.marvel.data.local.entity.HeroEntity
-import com.marcelo.marvel.domain.models.ComicsResult
 
 class MarvelLocalDataSource(private val heroDAO: HeroDAO) : MarvelDatabaseDataSource {
 
@@ -11,11 +11,7 @@ class MarvelLocalDataSource(private val heroDAO: HeroDAO) : MarvelDatabaseDataSo
     }
 
     override suspend fun insertHero(hero: HeroEntity) {
+        Log.d("testeDatabase", "Insert foi chamado")
         heroDAO.insertHero(hero)
     }
-
-    override suspend fun fetchComics(characterId: Long): ComicsResult {
-        return ComicsResult.Success(listOf())
-    }
-
 }

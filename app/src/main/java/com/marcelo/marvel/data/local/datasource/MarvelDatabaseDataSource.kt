@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface MarvelDatabaseDataSource {
 
     suspend fun fetchHeroes(): List<HeroEntity>
-    suspend fun insertHero(hero: HeroEntity)
 
-    suspend fun fetchComics(characterId: Long): ComicsResult
+     suspend fun insertHero(hero: HeroEntity)
 }

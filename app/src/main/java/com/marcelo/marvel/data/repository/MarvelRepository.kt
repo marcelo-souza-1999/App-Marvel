@@ -1,5 +1,6 @@
 package com.marcelo.marvel.data.repository
 
+import android.util.Log
 import com.marcelo.marvel.data.local.datasource.MarvelLocalDataSource
 import com.marcelo.marvel.data.local.entity.HeroEntity
 import com.marcelo.marvel.data.remote.datasource.MarvelRemoteDataSource
@@ -20,26 +21,33 @@ class MarvelRepository(
         val heroesLocal : List<HeroEntity> = localDataSource.fetchHeroes()
 
         if (heroesLocal.isEmpty()) {
+            Log.d("testeDatabase", "Banco ta vazio")
             val heroesFromApi: Flow<HeroesResult> = marvelRemoteDataSource.fetchHeroes()
-            heroesFromApi.onEach {
-                if (it is HeroesResult.Success) {
-                    it.heroes.forEach { hero ->
+
+            Log.d("testeDatabase", "HeroesApi: "+heroesFromApi.toString())
+
+            heroesFromApi.onEach {heroe->
+                Log.d("testeDatabase", "Banco ta vazio, dentro do foreach $heroesFromApi")
+
+                if (heroe is HeroesResult.Success) {
+                    heroe.heroes.forEach { hero ->
+                        Log.d("testeDatabase", "Salvando Heroe no banco: $hero")
                         localDataSource.insertHero(hero.toHeroEntity())
+                        Log.d("testeDatabase", "Salvando HeroeEntity no banco:" + hero.toHeroEntity())
                     }
                 }
-
             }
             return heroesFromApi
         }
         else {
+            Log.d("testeDatabase", "Banco não ta vazio")
             val heroList = heroesLocal.map {
                 it.toHero()
             }
-
+            Log.d("testeDatabase", "Salvando Heroe no banco: $heroList")
             return flowOf(HeroesResult.Success(heroList))
         }
     }
-
 
     suspend fun getComics(characterId: Long): ComicsResult {
         return marvelRemoteDataSource.fetchComics(characterId)
@@ -52,7 +60,7 @@ private fun HeroEntity.toHero() : Hero {
         id = this.id,
         name = this.name,
         description = this.description,
-        thumbnail = Thumbs(this.thumbnailUrl.path,"." + this.thumbnailUrl.extension)
+        thumbnail = Thumbs(this.toHero().thumbnail.path, "."+this.toHero().thumbnail.extension)
     )
 }
 
@@ -61,6 +69,6 @@ private fun Hero.toHeroEntity(): HeroEntity {
         id = this.id,
         name = this.name,
         description = this.description,
-        thumbnailUrl = Thumbs(this.thumbnail.path,"." + this.thumbnail.extension)
+        thumbnailUrl = this.thumbnail.path + "." + this.thumbnail.extension
     )
 }

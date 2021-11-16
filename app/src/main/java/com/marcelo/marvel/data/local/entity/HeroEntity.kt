@@ -12,5 +12,5 @@ data class HeroEntity(
     val name: String,
     val description: String,
     @ColumnInfo(name = "thumbnail")
-    val thumbnailUrl: Thumbs
+    val thumbnailUrl: String
 )

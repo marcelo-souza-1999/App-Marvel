@@ -33,19 +33,19 @@ val daoModule = module {
     single {get<MarvelDatabase>().heroDao()}
 
     single {
-        MarvelRepository(get(), get())
-    }
-
-    single<MarvelRemoteDataSource> {
-        MarvelRetrofitRemoteDataSource(get(), get())
-    }
-
-    single<MarvelDatabaseDataSource> {
         MarvelLocalDataSource(get())
     }
 }
 
 val viewModelHeroesModule = module {
+
+    single<MarvelRemoteDataSource> {
+        MarvelRetrofitRemoteDataSource(get(), get())
+    }
+
+    single {
+        MarvelRepository(get(), get())
+    }
 
     viewModel {
         HeroesViewModel(get())

@@ -1,6 +1,7 @@
 package com.marcelo.marvel.data.remote.datasource
 
 import android.content.Context
+import android.util.Log
 import com.marcelo.marvel.BuildConfig
 import com.marcelo.marvel.R
 import com.marcelo.marvel.data.remote.response.NetworkResponse

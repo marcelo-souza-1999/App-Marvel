@@ -8,6 +8,9 @@ import com.marcelo.marvel.R
 import com.marcelo.marvel.domain.models.Hero
 import com.marcelo.marvel.domain.models.HeroesResult
 import com.marcelo.marvel.data.repository.MarvelRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewModel() {
@@ -24,29 +27,32 @@ class HeroesViewModel(private val marvelRepository: MarvelRepository) : ViewMode
 
     fun getHeroes() = viewModelScope.launch {
 
-        when (val heroesResult = marvelRepository.getHeroes()) {
+        marvelRepository.getHeroes().collect { result ->
 
-            is HeroesResult.Success -> {
-                _heroesEvent.value = heroesResult.heroes
+            when(result) {
 
-                viewFlipperLiveData.value = Pair(VIEW_FLIPPER_HEROES, null)
-            }
+                is HeroesResult.Success ->{
+                    _heroesEvent.value = result.heroes
 
-            is HeroesResult.ApiError -> {
-                if (heroesResult.code == R.string.message_error_code_key) {
-                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_key)
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_HEROES, null)
                 }
-                else {
-                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internal_key)
+
+                is HeroesResult.ApiError -> {
+                    if (result.code == R.string.message_error_code_key) {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_key)
+                    }
+                    else {
+                        viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internal_key)
+                    }
                 }
-            }
 
-            is HeroesResult.NetworkError -> {
-                viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internet)
-            }
+                is HeroesResult.NetworkError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_internet)
+                }
 
-            is HeroesResult.ServerError -> {
-                viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_server)
+                is HeroesResult.ServerError -> {
+                    viewFlipperLiveData.value = Pair(VIEW_FLIPPER_ERROR, R.string.message_error_server)
+                }
             }
         }
     }
