@@ -1,6 +1,5 @@
 package com.marcelo.marvel.data.repository
 
-import android.util.Log
 import com.marcelo.marvel.data.local.datasource.MarvelLocalDataSource
 import com.marcelo.marvel.data.local.entity.HeroEntity
 import com.marcelo.marvel.data.remote.datasource.MarvelRemoteDataSource
@@ -9,8 +8,8 @@ import com.marcelo.marvel.domain.models.Hero
 import com.marcelo.marvel.domain.models.HeroesResult
 import com.marcelo.marvel.domain.models.Thumbs
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.onEach
 
 class MarvelRepository(
     private val marvelRemoteDataSource: MarvelRemoteDataSource,
@@ -18,33 +17,25 @@ class MarvelRepository(
 ) {
 
     suspend fun getHeroes(): Flow<HeroesResult> {
-        val heroesLocal : List<HeroEntity> = localDataSource.fetchHeroes()
+        val heroesLocal: List<HeroEntity> = localDataSource.fetchHeroes()
 
         if (heroesLocal.isEmpty()) {
-            Log.d("testeDatabase", "Banco ta vazio")
             val heroesFromApi: Flow<HeroesResult> = marvelRemoteDataSource.fetchHeroes()
 
-            Log.d("testeDatabase", "HeroesApi: "+heroesFromApi.toString())
-
-            heroesFromApi.onEach {heroe->
-                Log.d("testeDatabase", "Banco ta vazio, dentro do foreach $heroesFromApi")
+            heroesFromApi.collect { heroe ->
 
                 if (heroe is HeroesResult.Success) {
                     heroe.heroes.forEach { hero ->
-                        Log.d("testeDatabase", "Salvando Heroe no banco: $hero")
                         localDataSource.insertHero(hero.toHeroEntity())
-                        Log.d("testeDatabase", "Salvando HeroeEntity no banco:" + hero.toHeroEntity())
                     }
                 }
             }
             return heroesFromApi
-        }
-        else {
-            Log.d("testeDatabase", "Banco não ta vazio")
+        } else {
             val heroList = heroesLocal.map {
                 it.toHero()
+
             }
-            Log.d("testeDatabase", "Salvando Heroe no banco: $heroList")
             return flowOf(HeroesResult.Success(heroList))
         }
     }
@@ -55,12 +46,18 @@ class MarvelRepository(
 
 }
 
-private fun HeroEntity.toHero() : Hero {
+private fun HeroEntity.toHero(): Hero {
+
+    val lengthUrl = this.thumbnailUrl.length
+
     return Hero(
         id = this.id,
         name = this.name,
         description = this.description,
-        thumbnail = Thumbs(this.toHero().thumbnail.path, "."+this.toHero().thumbnail.extension)
+        thumbnail = Thumbs(
+            this.thumbnailUrl.substring(0, lengthUrl - 4),
+            this.thumbnailUrl.substring(lengthUrl - 3)
+        )
     )
 }
 

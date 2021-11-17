@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface HeroDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insertHero(hero: HeroEntity): Long
+    suspend fun insertHero(hero: HeroEntity): Long
 
     @Query("SELECT * FROM hero")
     suspend fun getAllHeroes(): List<HeroEntity>
