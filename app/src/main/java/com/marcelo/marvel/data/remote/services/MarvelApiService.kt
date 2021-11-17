@@ -1,9 +1,9 @@
 package com.marcelo.marvel.data.remote.services
 
-import com.marcelo.marvel.data.remote.services.response.NetworkResponse
-import com.marcelo.marvel.response.ComicsResponse
-import com.marcelo.marvel.response.ErrorResponse
-import com.marcelo.marvel.response.HeroesResponse
+import com.marcelo.marvel.data.remote.response.NetworkResponse
+import com.marcelo.marvel.domain.response.ComicsResponse
+import com.marcelo.marvel.domain.response.ErrorResponse
+import com.marcelo.marvel.domain.response.HeroesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

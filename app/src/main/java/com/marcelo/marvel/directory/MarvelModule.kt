@@ -1,11 +1,15 @@
 package com.marcelo.marvel.directory
 
-import com.marcelo.marvel.data.remote.repository.MarvelApiDataSource
-import com.marcelo.marvel.data.remote.repository.MarvelRepository
-import com.marcelo.marvel.data.remote.repository.MarvelRetrofitApiDataSource
+import androidx.room.Room
+import com.marcelo.marvel.data.local.app.MarvelDatabase
+import com.marcelo.marvel.data.local.datasource.MarvelDatabaseDataSource
+import com.marcelo.marvel.data.local.datasource.MarvelLocalDataSource
+import com.marcelo.marvel.data.remote.datasource.MarvelRemoteDataSource
+import com.marcelo.marvel.data.repository.MarvelRepository
+import com.marcelo.marvel.data.remote.datasource.MarvelRetrofitRemoteDataSource
 import com.marcelo.marvel.data.remote.services.ApiService.serviceMarvel
-import com.marcelo.marvel.ui.viewmodel.ComicsViewModel
-import com.marcelo.marvel.ui.viewmodel.HeroesViewModel
+import com.marcelo.marvel.presentation.viewmodel.ComicsViewModel
+import com.marcelo.marvel.presentation.viewmodel.HeroesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -15,18 +19,33 @@ val retrofitModule = module {
     }
 }
 
-val repositoryModule = module {
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(
+            get(),
+            MarvelDatabase::class.java,
+            "marvel_database"
+        ).build()
+    }
+}
+
+val daoModule = module {
+    single {get<MarvelDatabase>().heroDao()}
 
     single {
-        MarvelRepository(get())
-    }
-
-    single<MarvelApiDataSource> {
-        MarvelRetrofitApiDataSource(get(), get())
+        MarvelLocalDataSource(get())
     }
 }
 
 val viewModelHeroesModule = module {
+
+    single<MarvelRemoteDataSource> {
+        MarvelRetrofitRemoteDataSource(get(), get())
+    }
+
+    single {
+        MarvelRepository(get(), get())
+    }
 
     viewModel {
         HeroesViewModel(get())
