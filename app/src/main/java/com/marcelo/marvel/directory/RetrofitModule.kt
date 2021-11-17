@@ -19,41 +19,6 @@ val retrofitModule = module {
     }
 }
 
-val databaseModule = module {
-    single {
-        Room.databaseBuilder(
-            get(),
-            MarvelDatabase::class.java,
-            "marvel_database"
-        ).build()
-    }
-}
-
-val daoModule = module {
-    single {get<MarvelDatabase>().heroDao()}
-
-    single {
-        MarvelLocalDataSource(get())
-    }
-}
-
-val viewModelHeroesModule = module {
-
-    single<MarvelRemoteDataSource> {
-        MarvelRetrofitRemoteDataSource(get(), get())
-    }
-
-    single {
-        MarvelRepository(get(), get())
-    }
-
-    viewModel {
-        HeroesViewModel(get())
-    }
-}
-val viewModelComicsModule = module {
-
-    viewModel {
-        ComicsViewModel(get())
-    }
+object RetrofitModule {
+    val module = retrofitModule
 }
