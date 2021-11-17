@@ -6,7 +6,6 @@ import com.marcelo.marvel.data.remote.datasource.MarvelRemoteDataSource
 import com.marcelo.marvel.domain.models.ComicsResult
 import com.marcelo.marvel.domain.models.Hero
 import com.marcelo.marvel.domain.models.HeroesResult
-import com.marcelo.marvel.domain.models.Thumbs
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
@@ -34,7 +33,6 @@ class MarvelRepository(
         } else {
             val heroList = heroesLocal.map {
                 it.toHero()
-
             }
             return flowOf(HeroesResult.Success(heroList))
         }
@@ -44,28 +42,4 @@ class MarvelRepository(
         return marvelRemoteDataSource.fetchComics(characterId)
     }
 
-}
-
-private fun HeroEntity.toHero(): Hero {
-
-    val lengthUrl = this.thumbnailUrl.length
-
-    return Hero(
-        id = this.id,
-        name = this.name,
-        description = this.description,
-        thumbnail = Thumbs(
-            this.thumbnailUrl.substring(0, lengthUrl - 4),
-            this.thumbnailUrl.substring(lengthUrl - 3)
-        )
-    )
-}
-
-private fun Hero.toHeroEntity(): HeroEntity {
-    return HeroEntity(
-        id = this.id,
-        name = this.name,
-        description = this.description,
-        thumbnailUrl = this.thumbnail.path + "." + this.thumbnail.extension
-    )
 }
