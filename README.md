@@ -1,8 +1,9 @@
 ## Marvel App.
 
 Aplicativo Android cuja proposta é realizar uma consulta a api rest da Marvel e retornar os heróis e
-seus comics. A consulta é feita usando Retrofit. Foi usado também no projeto o Kotlin Coroutines,
-Koin para injeção de dependências, arquitetura MVVM e DataBindings.
+seus comics. A consulta é feita usando Retrofit que salva os dados de forma local no SQLite com a
+ajuda da lib Room do Google Jetpack. Foi usado também no projeto o Kotlin Coroutines, Koin para
+injeção de dependências, arquitetura MVVM e DataBindings.
 
 ## Os endpoint utilizado nesse aplicativo foram:
 
@@ -15,6 +16,8 @@ Koin para injeção de dependências, arquitetura MVVM e DataBindings.
 * Android Studio
 * Arquitetura MVVM
 * Koin
+* Flow
+* Room (SQLite)
 * Retrofit
 * Kotlin Coroutines
 * ViewModel
@@ -25,7 +28,8 @@ Koin para injeção de dependências, arquitetura MVVM e DataBindings.
 
 ## Funcionalidades
 
-- Primeira activity do app exibi uma lista de heróis da Marvel carregados da api
+- Primeira activity do app exibi uma lista de heróis da Marvel carregados da api e salvos de forma
+  local, podendo ser exibido mesmo estando sem internet
 - Segunda activity do app exibi os comics de determinado herói que você clicar na primeira activity,
   na segunda os comics são carregados baseado no id do Herói
 
