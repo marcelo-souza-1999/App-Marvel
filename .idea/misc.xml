@@ -4,14 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.2776332899869961" />
-        <entry key="app/src/main/res/layout/activity_comics.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_heroes.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/ic_back_left.xml" value="0.1775" />
+        <entry key="app/src/main/res/layout/activity_comics.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_heroes.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/list_itens_comics.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_itens_heroes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.33" />
         <entry key="app/src/main/res/layout/toolbar_comics.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar_heroes.xml" value="0.1361842105263158" />
+        <entry key="app/src/main/res/layout/view_header.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1015" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1015" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.1015" />

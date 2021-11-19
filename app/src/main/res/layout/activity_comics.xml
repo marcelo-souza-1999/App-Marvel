@@ -14,12 +14,15 @@
             android:layout_height="wrap_content"
             tools:context=".presentation.activity.ComicsActivity">
 
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/toolbar_heroes"
+            <com.marcelo.marvel.presentation.customviews.HeaderSimpleView
+                android:id="@+id/toolbarComics"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_60"
+                android:background="@color/background"
+                android:importantForAccessibility="yes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ViewFlipper
                 android:id="@+id/viewFlipperComics"
@@ -28,7 +31,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarComics"
                 app:layout_constraintVertical_bias="0.0">
 
                 <ProgressBar

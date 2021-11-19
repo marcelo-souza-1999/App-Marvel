@@ -14,12 +14,15 @@
             android:layout_height="wrap_content"
             tools:context=".presentation.activity.HeroesActivity">
 
-            <include
+            <com.marcelo.marvel.presentation.customviews.HeaderSimpleView
                 android:id="@+id/toolbar"
-                layout="@layout/toolbar_heroes"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_60"
+                android:background="@color/background"
+                android:importantForAccessibility="yes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ViewFlipper
                 android:id="@+id/viewFlipperHeros"
