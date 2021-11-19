@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HeaderSimpleView">
+        <attr name="headerTitle" format="string" />
+        <attr name="headerContentColor" format="color" />
+        <attr name="headerStepper" format="string" />
+        <attr name="buttonBack" format="string" />
+        <attr name="showStepper" format="boolean" />
+        <attr name="showBack" format="boolean" />
+    </declare-styleable>
+
+</resources>

@@ -10,7 +10,7 @@
         android:background="@color/transparent">
 
         <TextView
-            android:id="@+id/titleToolbar"
+            android:id="@+id/titleHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -11,10 +11,18 @@
     <dimen name="elevation_card_view_heroes">10dp</dimen>
     <dimen name="radius_card_view_heroes">20dp</dimen>
     <!-- Paddings -->
+    <dimen name="padding_5">5dp</dimen>
     <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
     <!-- Size Text -->
     <dimen name="size_txt_name_heroes">26sp</dimen>
     <dimen name="size_txt_title_comics">22sp</dimen>
     <dimen name="size_txt_count_pages">16sp</dimen>
     <dimen name="size_txt_description_heroes">20sp</dimen>
+    <!-- Margins Layout Header -->
+    <dimen name="margin_6">6dp</dimen>
+    <!-- Size Height, Width -->
+    <dimen name="height_48">48dp</dimen>
+    <dimen name="height_60">60dp</dimen>
+    <dimen name="width_48">48dp</dimen>
 </resources>
